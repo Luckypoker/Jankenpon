@@ -58,6 +58,10 @@ function playGame (j) {
         }
     }
 }
+const content = document.createElement("div");
+content.classList.add("content");
+content.textContent("")
+const btnr = 
 function playerWins () { 
     playerScore++
 };
