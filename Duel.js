@@ -1,7 +1,7 @@
 //Computer should randomly output either Rock, Paper, or Scissors
 let playerScore = 0;
 let compScore = 0;
-function getComputerChoice(max) {
+let computerSelection = function getComputerChoice(max) {
     var randomNumber = Math.floor(Math.random() * max);    
     switch (randomNumber) {
         case 1:
@@ -13,10 +13,10 @@ function getComputerChoice(max) {
     }
     }
      //Player and computer should be able to play out a round with the result being logged
-function playRound (playerSelection, computerSelection) {
+function playRound (playerSelection, com) {
     switch (playerSelection) {
         case "Rock":
-            switch (computerSelection) {
+            switch (computerSelection(3)) {
                 case "Rock":
                     return result = "Tie! Just two rocks chilling in a hot tub~";
                 case "Paper":
@@ -25,7 +25,7 @@ function playRound (playerSelection, computerSelection) {
                     return result = playerWins(), "You win! Rock beats scissors, good for the kid that discovered that but less so for the parents";
             }
         case "Paper":
-            switch (computerSelection) {
+            switch (computerSelection(3)) {
                 case "Rock":
                     return result = playerWins(), "You win! Paper beats rock! Congrats writing beats the unga bunga";
                 case "Paper":
@@ -34,7 +34,7 @@ function playRound (playerSelection, computerSelection) {
                     return result = compWins(), "You lose! Scissors beats paper! Don't blame yourself though, they were built specifically to stop you";
             }
         case "Scissors":
-            switch (computerSelection) {
+            switch (computerSelection(3)) {
                 case "Scissors":
                     return result = "Tie! Scissor fights are fun for the whole family!";
                 case "Rock":
@@ -47,7 +47,7 @@ function playRound (playerSelection, computerSelection) {
 //This plays out a set amount of rounds defined by #1
 function playGame (j) {
     for (let i = 1; i <= j; i++) {
-        console.log(playRound(window.prompt("Time to duel! Choose Rock, Paper, or Scissors"), getComputerChoice(3)));
+        console.log(playRound(playerSelection, computerSelection(3)));
         console.log(playerScore, compScore);
         if (i == 5) {
             if (playerScore > compScore) {
@@ -58,18 +58,25 @@ function playGame (j) {
         }
     }
 }
-const content = document.createElement("div");
-content.classList.add("content");
-content.textContent("")
-const btnr = 
 function playerWins () { 
     playerScore++
 };
 function compWins () {
     compScore++
 };
-playGame(5); //#1
-getComputerChoice(3);
-	
-	
+//DOM Manipulators
+const container = document.querySelector('#container')
+const content = document.createElement("div");
+content.classList.add("content");
+const scores = document.createElement("h1")
+scores.classList.add("")
+scores.textContent = `${playerScore}, ${compScore}`
+const btnr = document.querySelector("#btnr")
+btnr.addEventListener('click', () => {
+    playRound("Rock")
+})
+
+
+
+
 	
